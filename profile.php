@@ -1,19 +1,18 @@
 <?php 
 session_start();
 // Memeriksa apakah peran session 'role' adalah 'user', dan menghancurkan session jika benar
-if($_SESSION['role'] == 'user'){
-    session_destroy();
+if ($_SESSION['role'] != 'user') {
+    header('Location: login.php'); // Redirect ke halaman login jika bukan user
+    exit;
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Dashboard</title>
+    <title>Dashboard User</title>
     <!-- Link ke Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
@@ -34,29 +33,38 @@ if($_SESSION['role'] == 'user'){
             text-align: center;
             color: #007bff;
         }
-        .btn-logout {
+        .btn {
             display: block;
             width: 100%;
             padding: 10px;
-            margin-top: 20px;
+            margin-top: 10px;
             text-align: center;
-            background-color: #dc3545;
             color: white;
             border: none;
             border-radius: 20px;
             font-size: 16px;
             text-decoration: none;
         }
+        .btn-logout {
+            background-color: #dc3545;
+        }
         .btn-logout:hover {
             background-color: #c82333;
+        }
+        .btn-primary {
+            background-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Selamat datang, <?php echo $_SESSION['name']; ?></h1>
-        <a href="./backend/logout.php" class="btn-logout">Logout</a>
+        <h1>Selamat datang, <?php echo htmlspecialchars($_SESSION['name']); ?></h1>
+        <a href="show.php" class="btn btn-primary">Lihat Data</a>
+        <a href="./logout.php" class="btn btn-logout">Logout</a>
     </div>
 
     <!-- Link ke Bootstrap JS dan dependencies (optional) -->
@@ -66,11 +74,3 @@ if($_SESSION['role'] == 'user'){
 
 </body>
 </html>
-
-    <title>Document</title>
-</head>
-<body>
-    <h1>Selamat datang admin</h1>
-</body>
-</html>
-

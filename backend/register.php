@@ -1,9 +1,7 @@
 <?php
 
-
 session_start();
 
-main
 require './../config/db.php';
 
 if(isset($_POST['submit'])) {
@@ -21,10 +19,7 @@ if(isset($_POST['submit'])) {
     }
 
     $usedEmail = mysqli_query($db_connect,"SELECT email FROM users WHERE email = '$email'");
-
     if(mysqli_num_rows( $usedEmail) > 0) {
-
-main
         echo "email sudah digunakan";
         die;
     }
@@ -34,7 +29,6 @@ main
         
     $users = mysqli_query($db_connect,"INSERT INTO users (name,email, password,created_at) VALUES
                             ('$name','$email','$password','$created_at')");
-
 
     $getUserdata = mysqli_query($db_connect, "SELECT name, role FROM users WHERE email = '$email'");
     
@@ -47,7 +41,4 @@ main
 
 
     //echo "registrasi berhasil";
-
-    echo "registrasi berhasil";
-main
 }

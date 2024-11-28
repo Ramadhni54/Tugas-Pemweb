@@ -1,5 +1,6 @@
 <?php
 
+
             if(isset($_POST["email"]) && isset($_POST["password"])) {
                 $email = $_POST["email"];
                 $password = $_POST["password"];
@@ -15,56 +16,47 @@
         }
    
  ?>
- =======
 
 session_start();
-
-
-main
 require './../config/db.php';
 
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
 
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $user = mysqli_query($db_connect,"SELECT * FROM users WHERE email = '$email'");
-    if(mysqli_num_rows($user) > 0) {
+    // Query untuk mencari pengguna berdasarkan email
+    $user = mysqli_query($db_connect, "SELECT * FROM users WHERE email = '$email'");
+    
+    if (mysqli_num_rows($user) > 0) {
         $data = mysqli_fetch_assoc($user);
         
-        if(password_verify($password,$data['password'])) {
-pertemuan-7
+        // Verifikasi password
+        if (password_verify($password, $data['password'])) {
 
-            //otorisasi
+            // Otorisasi
             $_SESSION['name'] = $data['name'];
             $_SESSION['role'] = $data['role'];
 
-            if($_SESSION['role'] == 'admin') {
-
-                header('Location:./../admin.php');
+            // Redirect berdasarkan role
+            if ($_SESSION['role'] == 'admin') {
+                header('Location: ./../admin.php');
+                exit; // Penting untuk menghentikan eksekusi setelah header
             } else {
-                header('Location:./../profile.php');
+                header('Location: ./../profile.php');
+                exit; // Penting untuk menghentikan eksekusi setelah header
             }
 
-
-
-            echo "selamat datang ".$data['name'];
-            die;
-
-            //otorisasimain
         } else {
-            echo "password salah";
-            die;
+            // Password salah
+            header('Location: ./../wrong.php');
+            exit;
         }
-
     } else {
-        echo "email atau password salah";
-        die;
+        // Email tidak ditemukan
+        header('Location: ./../wrong.php');
+        exit;
     }
 }
-
 ?>
-
-?>
-main
 

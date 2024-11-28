@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Data Produk</title>
     <!-- Link Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,9 +25,7 @@
 <body>
     <div class="container">
         <h1 class="text-center text-primary mb-4">Data Produk</h1>
-        <div class="text-end mb-3">
-            <a href="create.php" class="btn btn-success">Tambah Produk</a>
-        </div>
+        
         <table class="table table-bordered table-striped text-center align-middle">
             <thead class="table-dark">
                 <tr>
@@ -63,51 +60,11 @@
                 <?php } ?>
             </tbody>
         </table>
+
+        <!-- Tombol Kembali -->
+        <a href="logout.php" class="btn btn-secondary mt-3">Logout</a>
     </div>
     <!-- Link Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-    <title>Document</title>
-</head>
-<body>
-    <h1>Data produk</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nama produk</th>
-                <th>harga</th>
-                <th>gambar produk</th>
-                <th>Opsi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                require './config/db.php';
-
-                $products = mysqli_query($db_connect,"SELECT * FROM products");
-                $no = 1;
-
-                while($row = mysqli_fetch_assoc($products)) {
-            ?>
-                <tr>
-                    <td><?=$no++;?></td>
-                    <td><?=$row['name'];?></td>
-                    <td><?=$row['price'];?></td>
-                    <!-- <td><img src="<?=$row['image'];?>" width="100"></td> -->
-                    <td><a href="<?=$row['image'];?>" target="_blank">unduh</a></td>
-                    <td>
-                        <a href="edit.php?id=<?=$row['id'];?>">Edit</a>
-                        <a href="delete.php?id=<?=$row['id'];?>">Hapus</a>
-
-                    </td>
-                </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-    
-</body>
-</html>
-main

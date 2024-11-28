@@ -17,11 +17,7 @@ if (isset($_POST['update'])) {
     mysqli_query($db_connect, "UPDATE products SET name='$name', price='$price', image='$image' WHERE id=$id");
 
     // Redirect ke halaman data produk
-
     header("Location: show.php");
-
-    header("Location: index.php");
-main
     exit();
 }
 ?>
@@ -30,7 +26,6 @@ main
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-ertemuan-7
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Produk</title>
     <!-- Link Bootstrap CSS -->
@@ -80,24 +75,3 @@ ertemuan-7
 </body>
 </html>
         
-
-    <title>Edit Produk</title>
-</head>
-<body>
-    <h1>Edit Produk</h1>
-    <form method="post">
-        <label>Nama Produk:</label>
-        <input type="text" name="name" value="<?= $row['name']; ?>" required><br><br>
-
-        <label>Harga:</label>
-        <input type="text" name="price" value="<?= $row['price']; ?>" required><br><br>
-
-        <label>Gambar URL:</label>
-        <input type="text" name="image" value="<?= $row['image']; ?>"><br><br>
-
-        <button type="submit" name="update">Update</button>
-    </form>
-    <a href="index.php">Kembali ke Data Produk</a>
-</body>
-</html>
- main
