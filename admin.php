@@ -1,19 +1,17 @@
 <?php 
 session_start();
-// Memeriksa apakah peran session 'role' adalah 'user', dan menghancurkan session jika benar
-if($_SESSION['role'] == 'user'){
+// Memeriksa apakah peran session 'role' adalah 'admin', dan menghancurkan session jika benar
+if($_SESSION['role'] == 'admin'){
     session_destroy();
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Dashboard</title>
+    <title>Dashboard Administrator</title>
     <!-- Link ke Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
@@ -55,7 +53,7 @@ if($_SESSION['role'] == 'user'){
 <body>
 
     <div class="container">
-        <h1>Selamat datang, <?php echo $_SESSION['name']; ?></h1>
+        <h1>Selamat datang Administrator, <?php echo $_SESSION['name']; ?></h1>
         <a href="./backend/logout.php" class="btn-logout">Logout</a>
     </div>
 
@@ -66,11 +64,3 @@ if($_SESSION['role'] == 'user'){
 
 </body>
 </html>
-
-    <title>Document</title>
-</head>
-<body>
-    <h1>Selamat datang admin</h1>
-</body>
-</html>
-
