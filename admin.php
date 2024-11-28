@@ -32,21 +32,35 @@ if($_SESSION['role'] == 'admin'){
             text-align: center;
             color: #007bff;
         }
-        .btn-logout {
+        .btn {
             display: block;
             width: 100%;
             padding: 10px;
-            margin-top: 20px;
+            margin-top: 10px;
             text-align: center;
-            background-color: #dc3545;
             color: white;
             border: none;
             border-radius: 20px;
             font-size: 16px;
             text-decoration: none;
         }
+        .btn-logout {
+            background-color: #dc3545;
+        }
         .btn-logout:hover {
             background-color: #c82333;
+        }
+        .btn-primary {
+            background-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-success {
+            background-color: #28a745;
+        }
+        .btn-success:hover {
+            background-color: #218838;
         }
     </style>
 </head>
@@ -54,7 +68,9 @@ if($_SESSION['role'] == 'admin'){
 
     <div class="container">
         <h1>Selamat datang Administrator, <?php echo $_SESSION['name']; ?></h1>
-        <a href="./backend/logout.php" class="btn-logout">Logout</a>
+        <a href="show.php" class="btn btn-primary">Lihat Data</a>
+        <a href="create.php" class="btn btn-success">Tambah Data</a>
+        <a href="./logout.php" class="btn btn-logout">Logout</a>
     </div>
 
     <!-- Link ke Bootstrap JS dan dependencies (optional) -->
